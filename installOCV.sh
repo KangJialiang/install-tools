@@ -59,7 +59,7 @@ cmake -G"$CMAKE_CONFIG_GENERATOR" \
     -Wno-dev \
     $CMAKE_OPTIONS \
     -DOPENCV_EXTRA_MODULES_PATH="$myRepo"/opencv_contrib/modules \
-    "$myRepo/$RepoSource" # -DCMAKE_INSTALL_PREFIX="$myRepo/install/$RepoSource" \
+    "$myRepo/$RepoSource" # -DCMAKE_INSTALL_PREFIX="$myRepo/install/$RepoSource"
 
 echo "************************* $RepoSource -->debug"
 cmake --build . --config debug --parallel $(expr 3 \* $processors / 2)
@@ -67,7 +67,7 @@ echo "************************* $RepoSource -->release"
 cmake --build . --config release --parallel $(expr 3 \* $processors / 2)
 
 export OPENCV_TEST_DATA_PATH="$myRepo"/opencv_extra/testdata/
-"$myRepo"/build/bin/Release/opencv_test_core.exe
+"$myRepo"/build/bin/opencv_test_core
 
 sudo cmake --build . --target install --config release --parallel
-#sudo cmake --build . --target install --config debug --parallel
+sudo cmake --build . --target install --config debug --parallel
