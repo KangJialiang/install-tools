@@ -3,7 +3,6 @@ myRepo=$(pwd)
 CMAKE_CONFIG_GENERATOR="Ninja"
 RepoSource=opencv
 processors=$(cat /proc/cpuinfo | grep "processor" | wc -l)
-export all_proxy="socks5h://127.0.0.1:1080"
 
 if [ ! -d "$myRepo/opencv" ]; then
     echo "cloning opencv"
