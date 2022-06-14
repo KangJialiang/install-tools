@@ -12,3 +12,4 @@ git submodule update --init --recursive
 export ENABLE_CONTRIB=1
 export ENABLE_HEADLESS=0
 export CMAKE_ARGS="-DOPENCV_ENABLE_NONFREE=ON"
+pip3 wheel . --verbose
