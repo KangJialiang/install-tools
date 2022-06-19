@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 myRepo=$(pwd)
 
 if [ ! -d "$myRepo/pytorch" ]; then
@@ -10,9 +12,7 @@ git stash clear
 git pull --rebase
 git submodule sync
 git submodule update --init --recursive --jobs 0
-cd ..
 python3 -m pip uninstall torch -y
-cd -
 python3 setup.py install --user
 cd ..
 
@@ -26,8 +26,5 @@ git stash clear
 git pull --rebase
 git submodule sync
 git submodule update --init --recursive --jobs 0
-cd ..
 python3 -m pip uninstall torchvision -y
-cd -
 python3 setup.py install --user
-cd ..

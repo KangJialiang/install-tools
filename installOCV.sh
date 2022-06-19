@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 myRepo=$(pwd)
 #CMAKE_CONFIG_GENERATOR=("Visual Studio 16 2019" -A x64)
 CMAKE_CONFIG_GENERATOR="Ninja"
