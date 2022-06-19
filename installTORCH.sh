@@ -8,7 +8,8 @@ cd pytorch
 git stash
 git stash clear
 git pull --rebase
-git submodule update --init --recursive
+git submodule sync
+git submodule update --init --recursive --jobs 0
 cd ..
 python3 -m pip uninstall torch -y
 cd -
@@ -23,7 +24,8 @@ cd torchvision
 git stash
 git stash clear
 git pull --rebase
-git submodule update --init --recursive
+git submodule sync
+git submodule update --init --recursive --jobs 0
 cd ..
 python3 -m pip uninstall torchvision -y
 cd -
