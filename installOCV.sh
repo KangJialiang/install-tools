@@ -45,16 +45,15 @@ cd "$myRepo"/build
 CMAKE_OPTIONS='-DBUILD_PERF_TESTS:BOOL=ON \
     -DBUILD_TESTS:BOOL=ON \
     -DBUILD_DOCS:BOOL=ON \
-    -DWITH_CUDA:BOOL=OFF \
-    -DBUILD_CUDA_STUBS=OFF \
+    -DWITH_CUDA:BOOL=ON \
+    -DWITH_CUDNN:BOOL=ON \
+    -DOPENCV_DNN_CUDA=ON \
     -DBUILD_EXAMPLES:BOOL=ON \
-    -DBUILD_opencv_python3=ON  \
+    -DBUILD_opencv_python3=OFF \
     -DBUILD_opencv_python2=OFF \
-    -DBUILD_NEW_PYTHON_SUPPORT=ON \
-    -DHAVE_opencv_python3=ON \
     -DOPENCV_ENABLE_NONFREE=ON \
     -DINSTALL_CREATE_DISTRIB=ON \
-    -DBUILD_opencv_world=ON \
+    -DCMAKE_BUILD_TYPE=Debug \
     -DENABLE_PRECOMPILED_HEADERS=OFF' # for windows to avoid Eigen error
 cmake -G"$CMAKE_CONFIG_GENERATOR" \
     -Wno-dev \
@@ -70,5 +69,5 @@ cmake --build . --config release --parallel $(expr 3 \* $processors / 2)
 export OPENCV_TEST_DATA_PATH="$myRepo"/opencv_extra/testdata/
 "$myRepo"/build/bin/opencv_test_core
 
-sudo cmake --build . --target install --config release --parallel
-sudo cmake --build . --target install --config debug --parallel
+cmake --build . --target install --config release --parallel
+cmake --build . --target install --config debug --parallel
